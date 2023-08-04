@@ -1,26 +1,27 @@
 import React from "react";
 import {
   Drawer,
-  Button,
-  Typography,
   IconButton,
 } from "@material-tailwind/react";
+
 import { useSelector, useDispatch } from "react-redux";
-import { incrementQuantity } from "../../redux/features/cart/cartSlice";
+import { decrementQuantity, incrementQuantity, removeItem } from "../../redux/features/cart/cartSlice";
 
 export function Cart({ open, openDrawer, closeDrawer }) {
   const dispatch = useDispatch();
 
-  const { cartItem } = useSelector((state) => state.cart);
+
+
+  const { cartItem,subTotal,totalItem } = useSelector((state) => state.cart);
 
   return (
     <React.Fragment>
       <Drawer
         open={open}
-        size="46vw"
+        size="32vw"
         placement="right"
         onClose={closeDrawer}
-        className=" z-50 mx-auto overflow-x-auto  top-16 absolute"
+        className=" z-30 shadow-xl !h-auto shadow-green mx-auto  top-16 absolute"
       >
         <div className=" flex items-center justify-between">
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
@@ -40,13 +41,15 @@ export function Cart({ open, openDrawer, closeDrawer }) {
             </svg>
           </IconButton>
         </div>
-        <div className="container mx-auto mt-5 bg-white">
-          <div className="w-full">
+        <div className="w-full">
             <div className="m-5">
               <h3 className="text-xl font-bold tracking-wider">
-                Shopping Cart 3 item
+                Shopping Cart {totalItem!==0 && totalItem} item
               </h3>
             </div>
+        <div className="container h-[50vh] overflow-x-auto mx-auto mt-5 bg-white">
+          
+            {cartItem && cartItem.length !== 0 ? (
             <table className=" shadow-inner">
               <thead>
                 <tr className="bg-gray-100">
@@ -57,7 +60,7 @@ export function Cart({ open, openDrawer, closeDrawer }) {
                 </tr>
               </thead>
               <tbody>
-                {cartItem && cartItem.length !== 0 ? (
+                {
                   cartItem.map((item) => {
                     return (
                       <tr>
@@ -69,7 +72,7 @@ export function Cart({ open, openDrawer, closeDrawer }) {
                         </td>
                         <td className="py-3 px-2 text-center whitespace-nowrap">
                           <div>
-                            <button className="px-2 py-0 text-lg shadow">-</button>
+                            <button onClick={()=>dispatch(decrementQuantity(item.id))}  className="px-2 py-0 text-lg shadow">-</button>
                             <input
                               type="text"
                               name="qty"
@@ -80,62 +83,60 @@ export function Cart({ open, openDrawer, closeDrawer }) {
                           </div>
                         </td>
                         <td className=" text-center whitespace-nowrap">
-                          ${item.price}
+                          ${item.total}
                         </td>
                         <td className=" text-center whitespace-nowrap">
-                          <button className=" text-red-100 bg-red-600 rounded">
+                          <button onClick={()=>dispatch(removeItem(item.id))} className=" text-red-100 bg-red-600 rounded">
                             x
                           </button>
                         </td>
                       </tr>
                     );
                   })
-                ) : (
-                  <p>no item found in cart</p>
-                )}
+                }
 
-                <tr>
-                  <td className="py-3 px-2 text-center whitespace-nowrap"></td>
-                  <td className="py-3 px-2 text-center whitespace-nowrap">
-                    <div className="font-bold">Total Qty - 4</div>
-                  </td>
-                  <td className="py-3 px-2 font-extrabold text-center whitespace-nowrap">
-                    Total - 40,00 (include tax)
-                  </td>
-                  <td className="py-3 px-2 text-center whitespace-nowrap">
-                    <button className="px-4 py-1 text-red-600 bg-red-100">
-                      Clear All
-                    </button>
-                  </td>
-                </tr>
+              
               </tbody>
-            </table>
-            <div className="flex justify-end mt-4 space-x-2">
+            </table>)
+            : (
+                <div className="flex flex-col">
+                <img src="/icon-empty-cart.png" className="h-60 w-60  mx-auto" alt="empty cart" />
+                <h3 className="text-xl mt-5 mx-auto font-bold tracking-wider">
+                    Your cart is empty
+              </h3>
+              <p className="lowercase p-10">
+              Looks like you have not added anything to your cart. Go ahead & explore top categories
+              </p>
+            
+                </div>
+                )}
+            
+          </div>
+          <div className="flex">
+                  <div className="py-3 px-2 text-center whitespace-nowrap"></div>
+                  <div className="py-3 px-2 font-extrabold text-center whitespace-nowrap">
+                    Subtotal - ${subTotal} (include tax)
+                  </div>
+                </div>
+        </div>
+        <div className="flex justify-start w-full">
+            
               <button
                 className="
               px-6
               py-3
-              text-sm text-gray-800
-              bg-gray-200
-              hover:bg-gray-400
-            "
-              >
-                Cannel
-              </button>
-              <button
-                className="
-              px-6
-              py-3
+              w-full
+              m-5
+              rounded-2xl
               text-sm text-white
-              bg-indigo-500
-              hover:bg-indigo-600
+              bg-pink
+
+              hover:bg-blue
             "
               >
                 Proceed to Checkout
               </button>
-            </div>
           </div>
-        </div>
       </Drawer>
     </React.Fragment>
   );

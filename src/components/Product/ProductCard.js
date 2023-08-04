@@ -5,12 +5,13 @@ import { addToCart } from '../../redux/features/cart/cartSlice';
 import { toast } from 'react-hot-toast';
 
 const ProductCard = ({item}) => {
+  const audio = new Audio("/success.mp3")
 
   const dispatch = useDispatch();
-  const handleCardClick = (data) =>{
+  const handleCardClick = async(data) =>{
+      await audio.play()
     dispatch(addToCart(data))
     toast.success("Item added to cart")
-    
   }
   //increase it by 5%
   const increasedPrice = (Number(item?.price)+(Number(item?.price) * 5)/100).toFixed(2);

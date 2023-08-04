@@ -17,7 +17,7 @@ const Product = () => {
 
 
   return (
-    <section className='product h-[100vh]'>
+    <section className='product scroll-smooth h-[100vh]'>
     <div className='flex gap-4 mt-5 justify-evenly flex-wrap'>
     {
       loading ? (
