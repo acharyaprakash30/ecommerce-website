@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { productAll } from '../../redux/features/product/productActions';
 import Spinner from '../Helper/Spinner';
 import Loading from '../Helper/Loading';
+import Header from '../Header/Header';
 const ProductCard = React.lazy(() => import('./ProductCard'));
 
 const Product = () => {
@@ -17,11 +18,15 @@ const Product = () => {
 
 
   return (
-    <section className='product scroll-smooth h-[100vh]'>
+    <section className='product mb-10'>
+    <Header head="All Types of Products"
+     title="MASTER FURRIER MANNY HERNANDEZ"
+     description="Naturally made Luxuries of the Finest Craftsmanship. In-style Outerwear that keeps you warm. Women's & Men's Collections."
+      />
     <div className='flex gap-4 mt-5 justify-evenly flex-wrap'>
     {
       loading ? (
-        <Spinner />
+        <Loading />
       ):(
         products.map((item,i)=>{
           return(
@@ -30,7 +35,6 @@ const Product = () => {
          </React.Suspense>
           )
         })
-
       )
     
     }
