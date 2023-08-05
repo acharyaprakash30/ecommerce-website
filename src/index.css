@@ -5,5 +5,11 @@
 @layer base {
     html {
         font-family: 'Manrope', sans-serif;
+    
     }
+  }
+
+  body{
+    background-color:#FF9CED;
+    font-family: 'Manrope', sans-serif;
   }

@@ -22,7 +22,7 @@ export const getProductById = createAsyncThunk(
   "product/id",
   async (id, { rejectWithValue }) => {
     try {
-      const data = await Http.get(`/product/${id}`);
+      const data = await Http.get(`/products/${id}`);
       return data.data;
     } catch (error) {
       if (error.response && error.response.data.message) {

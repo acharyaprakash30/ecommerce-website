@@ -23,7 +23,7 @@ const Product = () => {
      title="MASTER FURRIER MANNY HERNANDEZ"
      description="Naturally made Luxuries of the Finest Craftsmanship. In-style Outerwear that keeps you warm. Women's & Men's Collections."
       />
-    <div className='flex gap-4 mt-5 justify-evenly flex-wrap'>
+    <div className='flex gap-2 justify-evenly flex-wrap'>
     {
       loading ? (
         <Loading />

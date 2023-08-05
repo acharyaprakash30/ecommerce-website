@@ -4,7 +4,7 @@ const Hero = () => {
   return (
 <>
 
-      <section class=" w-[90vw] bg-fixed bg-hero-pattern bg-pink m-auto rounded-xl">
+      <section style={{borderRadius:"0rem 10rem"}} class=" w-[90vw] bg-fixed  bg-gray m-auto ">
       {/* <div
     className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
   ></div> */}
@@ -13,11 +13,11 @@ const Hero = () => {
       <h1 className="text-3xl font-extrabold sm:text-5xl">
         Let us find your
 
-        <strong className="block font-extrabold text-blue">
+        <strong className="block font-extrabold text-pink">
           Forever Home.
         </strong>
       </h1>
-      <button className="inline-flex items-center justify-center mt-5 px-5 py-3 mr-3 text-base font-medium text-center hover:text-green rounded-lg bg-blue hover:bg-pink">
+      <button className="inline-flex items-center justify-center mt-5 px-5 py-3 mr-3 text-base font-medium text-center hover:text-green rounded-lg bg-pink hover:bg-lightPink">
       Get started
       <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
       </button>

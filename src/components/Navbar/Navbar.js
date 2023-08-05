@@ -1,16 +1,13 @@
-import { Fragment, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { Disclosure } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useSelector } from 'react-redux'
 import { Cart } from '../Cart/Cart'
-import {
-  Button,
-} from "@material-tailwind/react";
+import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Categories', href: '#', current: true },
-  { name: 'Deals', href: '#', current: false },
-  { name: 'Products', href: '#', current: false },
+  { name: 'Gallery', href: '/gallery', current: false },
+  { name: 'Products', href: '/product', current: false },
   { name: 'Delivery', href: '#', current: false },
 ]
 
@@ -44,19 +41,14 @@ export default function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                </div>
+              
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
+                  <Link to="/" className='text-black hover:bg-pink hover:text-white rounded-md px-3 py-2 text-sm font-medium'>Home</Link>  
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
+                      <Link 
+                      to={item.href}
+                      key={item.name}
                         className={classNames(
                           item.current ? ' text-white' : 'text-black hover:bg-pink hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
@@ -64,16 +56,16 @@ export default function Navbar() {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                     
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="relative hover:text-pink">
-            <p className="absolute right-1 font-bold ">{totalItem}</p>
-                <svg onClick={openDrawer} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8  h-8 ml-3 mr-3 font-bold  cursor-pointer">
+            <div className="relative rounded-md px-3 py-2 text-sm font-medium  bg-pink text-white hover:bg-gray hover:text-pink">
+            <p className="absolute right-3 text-lg top-0 font-bold ">{totalItem}</p>
+                <svg onClick={openDrawer} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6  h-6 ml-3 mr-3 font-bold  cursor-pointer">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
               </svg>
               </div>

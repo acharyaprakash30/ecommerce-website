@@ -3,25 +3,33 @@ import { useDispatch } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
 import { addToCart } from '../../redux/features/cart/cartSlice';
 import { toast } from 'react-hot-toast';
+import { Link,useNavigate } from 'react-router-dom';
 
 const ProductCard = ({item}) => {
   const audio = new Audio("/success.mp3")
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const handleCardClick = async(data) =>{
+  const handleCartClick = async(data) =>{
       await audio.play()
     dispatch(addToCart(data))
     toast.success("Item added to cart")
   }
+
+  const handleCardClick = (data) =>{
+    navigate(`/product/${data.id}`)
+    
+  }
   //increase it by 5%
   const increasedPrice = (Number(item?.price)+(Number(item?.price) * 5)/100).toFixed(2);
   return (
-    <div className="hover:scale-105 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray shadow-lg">
-    <div className="relative m-auto flex h-60 overflow-hidden rounded-xl" href="#">
+    <div style={{borderRadius:"3rem 0rem"}}  className="lg:w-1/2 hover:scale-105  mb-5 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray bg-white shadow-lg">
+
+    <div className="relative m-auto flex h-52 overflow-hidden rounded-xl" href="#">
       <img className="object-fill p-2" src={item?.image} alt="productimage" />
       <span className="absolute top-0 left-0 m-2 rounded-full bg-pink px-2 text-center text-sm font-medium text-white">39% OFF</span>
     </div>
-    <div className="mt-4 px-5 pb-5">
+    <div className="mt-4 px-5">
         <h5 className=" tracking-tight font-bold text-pink">{item?.title}</h5>
         <p className=" tracking-tight font-bold text-pink">{item?.category}</p>
       <div className="mt-2 mb-5 flex items-center justify-between">
@@ -41,11 +49,18 @@ const ProductCard = ({item}) => {
         />
         </div>
       </div>
-      <div onClick={()=>handleCardClick(item)} className="flex items-center cursor-pointer justify-center rounded-md bg-pink  focus:ring-violet-300  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue focus:outline-none active:bg-pink">
+    
+    </div>
+    <div className="px-5 flex gap-5 pb-5">
+    <div onClick={()=>handleCartClick(item)} title='add to cart' className="flex items-center cursor-pointer justify-center rounded-md bg-pink  focus:ring-violet-300  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue focus:outline-none active:bg-pink">
         <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-        Add to cart</div>
+        </svg> Cart
+      </div>
+        <div onClick={()=>handleCardClick(item)} className="flex items-center cursor-pointer w-full justify-center rounded-md bg-pink  focus:ring-violet-300  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue focus:outline-none active:bg-pink">
+        View all details
+
+      </div>
     </div>
   </div>
   )
