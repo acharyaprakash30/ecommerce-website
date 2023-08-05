@@ -23,10 +23,10 @@ const ProductCard = ({item}) => {
   //increase it by 5%
   const increasedPrice = (Number(item?.price)+(Number(item?.price) * 5)/100).toFixed(2);
   return (
-    <div style={{borderRadius:"3rem 0rem"}}  className="lg:w-1/2 hover:scale-105  mb-5 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray bg-white shadow-lg">
+    <div style={{borderRadius:"3rem 0rem"}}  className="lg:w-1/2 hover:scale-105 border-3 shadow-lg drop-shadow-lg border-pink  mb-5 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg  bg-gray/75">
 
-    <div className="relative m-auto flex h-52 overflow-hidden rounded-xl" href="#">
-      <img className="object-fill p-2" src={item?.image} alt="productimage" />
+    <div style={{backgroundColor:"rgb(231 212 233)"}} className="relative m-auto flex h-52 overflow-hidden rounded-xl" href="#">
+      <img style={{mixBlendMode:"multiply"}} className="object-fill p-2" src={item?.image} alt="productimage" />
       <span className="absolute top-0 left-0 m-2 rounded-full bg-pink px-2 text-center text-sm font-medium text-white">39% OFF</span>
     </div>
     <div className="mt-4 px-5">

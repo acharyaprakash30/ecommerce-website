@@ -24,9 +24,9 @@ const {productById} = useSelector((item)=>item.product)
 
   return (
 <section className="overflow-hidden">
-  <div className="container px-5 py-24 mx-auto">
+  <div className="container px-5 py-5 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <img style={{mixBlendMode:"multiply"}} alt="ecommerce" className="lg:w-1/2 w-full p-10 object-cover object-center  border border-gray shadow-2xl rounded-2xl" src={productById?.image}/>
+      <img style={{mixBlendMode:"multiply"}} alt="ecommerce" className="lg:w-1/2 p-10 object-center  border border-gray shadow-2xl rounded-2xl" src={productById?.image}/>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-justify">
         <h2 className="text-sm ">{productById?.category}</h2>
         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{productById?.title}</h1>
