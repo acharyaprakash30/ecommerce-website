@@ -23,14 +23,14 @@ const handleCartClick = async(data) =>{
 const {productById} = useSelector((item)=>item.product)
 
   return (
-<section className="overflow-hidden">
-  <div className="container px-5 py-5 mx-auto">
+<section className="overflow-hidden h-[90vh]">
+  <div className="container px-5 py-20 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <img style={{mixBlendMode:"multiply"}} alt="ecommerce" className="lg:w-1/2 p-10 object-center  border border-gray shadow-2xl rounded-2xl" src={productById?.image}/>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-justify">
         <h2 className="text-sm ">{productById?.category}</h2>
-        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{productById?.title}</h1>
-        <div className="flex  mb-4">
+        <h1 className="text-gray-900 text-3xl title-font font-medium mb-10">{productById?.title}</h1>
+        <div className="flex mb-7">
         <StarRatingComponent 
           name="rate2" 
           editing={false}
@@ -43,23 +43,23 @@ const {productById} = useSelector((item)=>item.product)
             
           <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
             <Link to='#' className="text-gray hover:text-pink">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+              <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
               </svg>
             </Link>
             <Link to='#' className="ml-2 text-gray hover:text-pink">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+              <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
               </svg>
             </Link>
             <Link to='#' className="ml-2 text-gray hover:text-pink">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+              <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
               </svg>
             </Link>
           </span>
         </div>
-        <p className="leading-relaxed">{productById?.description}</p>
+        <p className="leading-relaxed mb-10">{productById?.description}</p>
         <div className="flex justify-around mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
           <div className="flex">
             <span className="mr-3">Color</span>
@@ -77,7 +77,7 @@ const {productById} = useSelector((item)=>item.product)
                 <option>XL</option>
               </select>
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4" viewBox="0 0 24 24">
+                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
                   <path d="M6 9l6 6 6-6"></path>
                 </svg>
               </span>
@@ -87,8 +87,8 @@ const {productById} = useSelector((item)=>item.product)
         </div>
         <div className="flex justify-between">
         <div onClick={()=>handleCartClick(productById)} title='add to cart' className="flex justify-around items-center cursor-pointer  rounded-md bg-pink hover:bg-gray hover:text-pink  px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none active:bg-pink">
-        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>Add To Cart
       </div>
         <div className="flex items-center cursor-pointer  justify-center rounded-md bg-pink  focus:ring-violet-300 hover:bg-gray hover:text-pink  px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none active:bg-pink">

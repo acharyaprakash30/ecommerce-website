@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
 import { addToCart } from '../../redux/features/cart/cartSlice';
 import { toast } from 'react-hot-toast';
-import { Link,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({item}) => {
   const audio = new Audio("/success.mp3")
@@ -23,7 +23,7 @@ const ProductCard = ({item}) => {
   //increase it by 5%
   const increasedPrice = (Number(item?.price)+(Number(item?.price) * 5)/100).toFixed(2);
   return (
-    <div style={{borderRadius:"3rem 0rem"}}  className="lg:w-1/2 hover:scale-105 border-3 shadow-lg drop-shadow-lg border-pink  mb-5 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg  bg-gray/75">
+    <div key={item?.id} style={{borderRadius:"3rem 0rem"}}  className="lg:w-1/2 hover:scale-105 border-3 shadow-lg drop-shadow-lg border-pink  mb-5 transition duration-500 relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg  bg-gray/75">
 
     <div style={{backgroundColor:"rgb(231 212 233)"}} className="relative m-auto flex h-52 overflow-hidden rounded-xl" href="#">
       <img style={{mixBlendMode:"multiply"}} className="object-fill p-2" src={item?.image} alt="productimage" />
@@ -53,8 +53,8 @@ const ProductCard = ({item}) => {
     </div>
     <div className="px-5 flex gap-5 pb-5">
     <div onClick={()=>handleCartClick(item)} title='add to cart' className="flex items-center cursor-pointer justify-center rounded-md bg-pink  focus:ring-violet-300  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue focus:outline-none active:bg-pink">
-        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg> Cart
       </div>
         <div onClick={()=>handleCardClick(item)} className="flex items-center cursor-pointer w-full justify-center rounded-md bg-pink  focus:ring-violet-300  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue focus:outline-none active:bg-pink">

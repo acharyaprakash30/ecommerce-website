@@ -18,10 +18,10 @@ export function Cart({ open, openDrawer, closeDrawer }) {
     <React.Fragment>
       <Drawer
         open={open}
-        size="32vw"
+        size="460px"
         placement="right"
         onClose={closeDrawer}
-        className=" z-30 shadow-xl !h-auto shadow-green mx-auto  top-16 absolute"
+        className=" z-30 shadow-xl  !h-auto shadow-green mx-auto  top-16 absolute"
       >
         <div className=" flex items-center justify-between">
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
