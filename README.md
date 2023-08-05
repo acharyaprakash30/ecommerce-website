@@ -1,7 +1,7 @@
 
 # Ecommerce website 
 
-This project is an eCommerce website with a cart feature, which has been built using the ReactJS library. It also incorporates the Redux Toolkit, a powerful state management tool, to handle all application state and facilitate API interactions.
+This project is an Ecommerce website with a add to cart feature, which has been built using the ReactJS library. It also incorporates the Redux Toolkit, a powerful state management tool, to handle all application state and facilitate API interactions.
 
 
 
